@@ -1,0 +1,86 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * loginlink plugin for Craft CMS 3.x
+ *
+ * loginlink Settings.twig
+ *
+ * @author    Disposition Tools
+ * @copyright Copyright (c) 2022 Disposition Tools
+ * @link      https://www.disposition.tools
+ * @package   Loginlink
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+
+{{ forms.textField({
+    label: 'Email subject',
+    instructions: 'Your email subject',
+    id: 'emailSubject',
+    name: 'emailSubject',
+    value: settings['emailSubject']})
+}}
+
+{{ forms.textareaField({
+    label: 'Email message',
+    instructions: 'Your email message',
+    id: 'emailMessage',
+    name: 'emailMessage',
+    value: settings['emailMessage']})
+}}
+
+
+
+{{ forms.textField({
+    label: 'Duration login link lasts',
+    instructions: 'In seconds',
+    id: 'loginDuration',
+    name: 'loginDuration',
+    value: settings['loginDuration']})
+}}
+
+
+{{ forms.textField({
+    label: 'Default redirect url',
+    instructions: '',
+    id: 'defaultRedirectUrl',
+    name: 'defaultRedirectUrl',
+    value: settings['defaultRedirectUrl']})
+}}
+
+{{ forms.textField({
+    label: 'Error redirect url',
+    instructions: '',
+    id: 'errorRedirectUrl',
+    name: 'errorRedirectUrl',
+    value: settings['errorRedirectUrl']})
+}}
+
+{{ forms.textField({
+    label: 'Error message for an invalid code',
+    instructions: '',
+    id: 'invalidCodeMessage',
+    name: 'invalidCodeMessage',
+    value: settings['invalidCodeMessage']})
+}}
+
+
+{{ forms.textField({
+    label: 'Error message for a previously used code',
+    instructions: '',
+    id: 'usedCodeMessage',
+    name: 'usedCodeMessage',
+    value: settings['usedCodeMessage']})
+}}
+
+
+{{ forms.textField({
+    label: 'Error message for an invalid email address',
+    instructions: '',
+    id: 'invalidEmailAddressMessage',
+    name: 'invalidEmailAddressMessage',
+    value: settings['invalidEmailAddressMessage']})
+}}

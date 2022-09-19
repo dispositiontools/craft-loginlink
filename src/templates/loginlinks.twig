@@ -1,0 +1,46 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * loginlink plugin for Craft CMS 3.x
+ *
+ * loginlink index.twig
+ *
+ * @author    Disposition Tools
+ * @copyright Copyright (c) 2022 Disposition Tools
+ * @link      https://www.disposition.tools
+ * @package   Loginlink
+ * @since     1.0.0
+ */
+#}
+
+{% extends "_layouts/cp" %}
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("dispositiontools\\loginlink\\assetbundles\\loginlink\\LoginlinkAsset") %}
+{% do view.registerAssetBundle("dispositiontools\\loginlink\\assetbundles\\loginlinkscpsection\\LoginlinksCPSectionAsset") %}
+
+{# Link for the ? icon at the bottom of the page #}
+{% set docsUrl = "https://github.com/dispositiontools/loginlink/blob/master/README.md" %}
+
+{# The title of this CP section #}
+{% set title = "loginlink" %}
+
+{# The URL to this plugin's base CP section #}
+{% set pluginCpUrl = url('loginlink') %}
+
+{# Get a URL to an image in our AssetBundle #}
+{% set iconUrl = view.getAssetManager().getPublishedUrl('@dispositiontools/loginlink/assetbundles/loginlinkscpsection/dist', true) ~ '/img/Loginlinks-icon.svg' %}
+
+{# Content that should appear in the page header#}
+{% set extraPageHeaderHtml %}
+    <div class="buttons">
+        <a href="{{ pluginCpUrl }}" class="btn submit add icon">{{ "Click Me!"|t('loginlink') }}</a>
+    </div>
+{% endset %}
+
+{# The content of the CP Section#}
+{% set content %}
+    <h2>{{ "Loginlinks CP Section body goes here"|t('loginlink') }}</h2>
+    <img src="{{ iconUrl }}" height="64" width="64" />
+    <p class="textline"></p>
+{% endset %}
