@@ -1,49 +1,50 @@
 {
     "name": "dispositiontools/craft-loginlink",
-    "description": "Log in with a link",
+    "description": "Log in with a magic link",
     "type": "craft-plugin",
-    "version": "0.0.1",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "loginlink"
-    ],
+    "license": "proprietary",
+    "version": "4.0.0",
     "support": {
-        "docs": "https://github.com/dispositiontools/loginlink/blob/master/README.md",
-        "issues": "https://github.com/dispositiontools/loginlink/issues"
+        "email": "support@disposition.tools",
+        "issues": "https://github.com/dispositiontools/craft-loginlink/issues?state=open",
+        "source": "https://github.com/dispositiontools/craft-loginlink",
+        "docs": "https://github.com/dispositiontools/craft-loginlink",
+        "rss": "https://github.com/dispositiontools/craft-loginlink/releases.atom"
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Disposition Tools",
-            "homepage": "https://www.disposition.tools"
-        }
-    ],
     "require": {
-        "craftcms/cms": "^3.0.0"
+        "php": ">=8.0.2",
+        "craftcms/cms": "^4.5.0"
     },
     "require-dev": {
-      "craftcms/cms": "^3.2.0",
-      "codeception/codeception": "^3.0",
-      "vlucas/phpdotenv": "^3.0"
+        "craftcms/ecs": "dev-main",
+        "craftcms/phpstan": "dev-main"
     },
     "autoload": {
         "psr-4": {
-          "dispositiontools\\loginlink\\": "src/"
+            "dispositiontools\\loginlink\\": "src/"
         }
     },
     "extra": {
-        "name": "Log in link",
         "handle": "loginlink",
+        "name": "Log in link",
         "developer": "Disposition Tools",
-        "developerUrl": "https://www.disposition.tools",
-        "documentationUrl": "https://github.com/dispositiontools/loginlink/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/dispositiontools/loginlink/master/CHANGELOG.md",
-        "components": {
-            "login": "dispositiontools\\loginlink\\services\\Login"
-        },
+        "documentationUrl": "https://github.com/dispositiontools/craft-loginlink",
         "class": "dispositiontools\\loginlink\\Loginlink"
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }
+

@@ -1,8 +1,11 @@
-# Log in link Changelog
+# Login link Changelog
 
-All notable changes to this project will be documented in this file.
+## 4.0.0 - 2026-10-16
+## Changed
+- Upgraded for Craft 4  
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+### Added
+- Added the ability to have different configurations
 
 ## 1.0.0 - 2022-09-03
 ### Added

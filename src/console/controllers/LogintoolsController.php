@@ -1,82 +1,35 @@
 <?php
-/**
- * loginlink plugin for Craft CMS 3.x
- *
- * Log in with a link
- *
- * @link      https://www.disposition.tools
- * @copyright Copyright (c) 2022 Disposition Tools
- */
 
 namespace dispositiontools\loginlink\console\controllers;
 
-use dispositiontools\loginlink\Loginlink;
-
 use Craft;
-use yii\console\Controller;
-use yii\helpers\Console;
+use craft\console\Controller;
+use yii\console\ExitCode;
 
 /**
- * Logintools Command
- *
- * The first line of this class docblock is displayed as the description
- * of the Console Command in ./craft help
- *
- * Craft can be invoked via commandline console by using the `./craft` command
- * from the project root.
- *
- * Console Commands are just controllers that are invoked to handle console
- * actions. The segment routing is plugin-name/controller-name/action-name
- *
- * The actionIndex() method is what is executed if no sub-commands are supplied, e.g.:
- *
- * ./craft loginlink/logintools
- *
- * Actions must be in 'kebab-case' so actionDoSomething() maps to 'do-something',
- * and would be invoked via:
- *
- * ./craft loginlink/logintools/do-something
- *
- * @author    Disposition Tools
- * @package   Loginlink
- * @since     1.0.0
+ * Logintools controller
  */
 class LogintoolsController extends Controller
 {
-    // Public Methods
-    // =========================================================================
+    public $defaultAction = 'index';
 
-    /**
-     * Handle loginlink/logintools console commands
-     *
-     * The first line of this method docblock is displayed as the description
-     * of the Console Command in ./craft help
-     *
-     * @return mixed
-     */
-    public function actionIndex()
+    public function options($actionID): array
     {
-        $result = 'something';
-
-        echo "Welcome to the console LogintoolsController actionIndex() method\n";
-
-        return $result;
+        $options = parent::options($actionID);
+        switch ($actionID) {
+            case 'index':
+                // $options[] = '...';
+                break;
+        }
+        return $options;
     }
 
     /**
-     * Handle loginlink/logintools/do-something console commands
-     *
-     * The first line of this method docblock is displayed as the description
-     * of the Console Command in ./craft help
-     *
-     * @return mixed
+     * loginlink/logintools command
      */
-    public function actionDoSomething()
+    public function actionIndex(): int
     {
-        $result = 'something';
-
-        echo "Welcome to the console LogintoolsController actionDoSomething() method\n";
-
-        return $result;
+        // ...
+        return ExitCode::OK;
     }
 }

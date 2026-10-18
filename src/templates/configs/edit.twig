@@ -1,0 +1,25 @@
+{% extends '_layouts/cp' %}
+{% import '_includes/forms.twig' as forms %}
+
+{% set title = config.id ? ('Edit login config'|t('loginlink')) : ('New login config'|t('loginlink')) %}
+{% set fullPageForm = true %}
+
+{% block content %}
+    {{ actionInput('loginlink/cp/save') }}
+    {{ redirectInput('loginlink') }}
+    {% if config.id %}{{ hiddenInput('id', config.id) }}{% endif %}
+
+    {{ forms.textField({ label: 'Login duration (seconds)'|t('loginlink'), id: 'loginDuration', name: 'loginDuration', type: 'number', min: 1, value: config.loginDuration, errors: config.getErrors('loginDuration'), required: true }) }}
+    {{ forms.textField({ label: 'Default redirect URL'|t('loginlink'), id: 'defaultRedirectUrl', name: 'defaultRedirectUrl', value: config.defaultRedirectUrl, errors: config.getErrors('defaultRedirectUrl') }) }}
+    {{ forms.textField({ label: 'Error redirect URL'|t('loginlink'), id: 'errorRedirectUrl', name: 'errorRedirectUrl', value: config.errorRedirectUrl, errors: config.getErrors('errorRedirectUrl') }) }}
+    {{ forms.textField({ label: 'Notification template'|t('loginlink'), id: 'notificationTemplates', name: 'notificationTemplates', value: config.notificationTemplates, errors: config.getErrors('notificationTemplates') }) }}
+    {{ forms.textField({ label: 'From email address'|t('loginlink'), id: 'fromEmailAddress', name: 'fromEmailAddress', type: 'email', value: config.fromEmailAddress, errors: config.getErrors('fromEmailAddress') }) }}
+    {{ forms.textField({ label: 'From name'|t('loginlink'), id: 'fromEmailName', name: 'fromEmailName', value: config.fromEmailName, errors: config.getErrors('fromEmailName') }) }}
+    {{ forms.textField({ label: 'Email subject'|t('loginlink'), id: 'emailSubject', name: 'emailSubject', value: config.emailSubject, errors: config.getErrors('emailSubject') }) }}
+    {{ forms.textareaField({ label: 'Email message'|t('loginlink'), id: 'emailMessage', name: 'emailMessage', value: config.emailMessage, rows: 8, errors: config.getErrors('emailMessage') }) }}
+    {{ forms.checkboxGroupField({ label: 'User groups'|t('loginlink'), name: 'userGroups', values: config.userGroups ?? [], options: userGroups|map(group => { label: group.name, value: group.id }) }) }}
+    {{ forms.textField({ label: 'Invalid code message'|t('loginlink'), name: 'invalidCodeMessage', value: config.invalidCodeMessage, errors: config.getErrors('invalidCodeMessage') }) }}
+    {{ forms.textField({ label: 'Used code message'|t('loginlink'), name: 'usedCodeMessage', value: config.usedCodeMessage, errors: config.getErrors('usedCodeMessage') }) }}
+    {{ forms.textField({ label: 'Timed-out code message'|t('loginlink'), name: 'timedoutCodeMessage', value: config.timedoutCodeMessage, errors: config.getErrors('timedoutCodeMessage') }) }}
+    {{ forms.textField({ label: 'Invalid email address message'|t('loginlink'), name: 'invalidEmailAddressMessage', value: config.invalidEmailAddressMessage, errors: config.getErrors('invalidEmailAddressMessage') }) }}
+{% endblock %}

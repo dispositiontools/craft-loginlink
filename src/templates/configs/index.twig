@@ -1,0 +1,33 @@
+{% extends '_layouts/cp' %}
+
+{% set title = 'Login configs'|t('loginlink') %}
+{% set selectedSubnavItem = 'loginlink' %}
+
+{% block actionButton %}
+    <a class="btn submit add icon" href="{{ url('loginlink/configs/new') }}">{{ 'New config'|t('loginlink') }}</a>
+{% endblock %}
+
+{% block content %}
+    {% if configs %}
+        <table class="data fullwidth">
+            <thead><tr>
+                <th>{{ 'Config'|t('loginlink') }}</th>
+                <th>{{ 'Duration'|t('loginlink') }}</th>
+                <th>{{ 'uid'|t('loginlink') }}</th>
+                <th>{{ 'Redirect URL'|t('loginlink') }}</th>
+            </tr></thead>
+            <tbody>
+                {% for config in configs %}
+                    <tr>
+                        <th><a href="{{ url('loginlink/configs/' ~ config.id) }}">{{ config.emailSubject ?: 'Config #' ~ config.id }}</a></th>
+                        <td>{{ config.loginDuration }}</td>
+                        <td>{{ config.uid }}</td>
+                        <td>{{ config.defaultRedirectUrl }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'No login configs exist yet.'|t('loginlink') }}</p>
+    {% endif %}
+{% endblock %}
