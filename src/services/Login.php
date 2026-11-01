@@ -171,7 +171,7 @@ class Login extends Component
          *
          * From any other plugin file, call it like this:
          *
-         *     Loginlink::$plugin->login->createLink()
+         *     Loginlink::$plugin->login->createLink($details, true)
          *
          * @return mixed
          */

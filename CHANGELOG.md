@@ -1,5 +1,14 @@
 # Login link Changelog
 
+## 4.0.1 - 2026-11-01
+### Added
+- Ability to send login links via a do tag
+{% set details = {
+    emailAddress: email,
+    configUid: configUid
+} %}
+{% do craft.loginlink.sendLoginLink( details ) %}
+
 ## 4.0.0 - 2026-10-16
 ## Changed
 - Upgraded for Craft 4  

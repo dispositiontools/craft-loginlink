@@ -9,9 +9,11 @@ use craft\events\RegisterComponentTypesEvent;
 use craft\events\RegisterUrlRulesEvent;
 use craft\services\Utilities;
 use craft\web\UrlManager;
+use craft\web\twig\variables\CraftVariable;
 use dispositiontools\loginlink\models\Settings;
 use dispositiontools\loginlink\services\Configs;
 use dispositiontools\loginlink\services\Login;
+use dispositiontools\loginlink\services\LoginlinkVariableService;
 use dispositiontools\loginlink\utilities\Loginlinks;
 use yii\base\Event;
 
@@ -72,6 +74,12 @@ class Loginlink extends Plugin
 
         Event::on(Utilities::class, Utilities::EVENT_REGISTER_UTILITY_TYPES, function(RegisterComponentTypesEvent $event): void {
             $event->types[] = Loginlinks::class;
+        });
+
+        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function(Event $event): void {
+            /** @var CraftVariable $variable */
+            $variable = $event->sender;
+            $variable->set('loginlink', LoginlinkVariableService::class);
         });
     }
 }
